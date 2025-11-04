@@ -154,8 +154,8 @@ execution → CLI display.
   not render logic.
 - Never mutate state directly; use immutable updates with spread syntax or
   similar.
-- useEffect: Primarily for synchronization. DO NOT `setState` inside `useEffect`
-  (degrades performance).
+- useEffect: Primarily for synchronization with external systems. Avoid calling
+  `setState` inside `useEffect` as it degrades performance.
   - Include all dependencies in the dependency array; don't suppress ESLint.
   - Return cleanup functions where appropriate.
   - For user actions (form submit, clicks), use event handlers, not `useEffect`.
