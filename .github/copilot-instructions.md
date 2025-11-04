@@ -163,8 +163,8 @@ execution → CLI display.
 - Prefer composition and small components over large monolithic ones.
 - Optimize for concurrency: use functional state updates (e.g.,
   `setCount(c => c + 1)`).
-- React Compiler: Omit `useMemo`, `useCallback`, and `React.memo` if React
-  Compiler is enabled.
+- Memoization: Avoid premature optimization with `useMemo`, `useCallback`, and
+  `React.memo`. Focus on clear, simple components with direct data flow.
 
 ### Quality gates and validation
 
