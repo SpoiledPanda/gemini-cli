@@ -187,6 +187,17 @@ export function runPrettier() {
   }
 }
 
+export function runMarkdownlint() {
+  console.log('\nRunning Markdownlint...');
+  if (
+    !runCommand(
+      'markdownlint-cli2 "**/*.md" "!**/node_modules/**" "!**/dist/**" "!**/build/**" "!**/bundle/**"',
+    )
+  ) {
+    process.exit(1);
+  }
+}
+
 export function runSensitiveKeywordLinter() {
   console.log('\nRunning sensitive keyword linter...');
   const SENSITIVE_PATTERN = /gemini-\d+(\.\d+)?/g;
@@ -358,6 +369,9 @@ function main() {
   if (args.includes('--prettier')) {
     runPrettier();
   }
+  if (args.includes('--markdownlint')) {
+    runMarkdownlint();
+  }
   if (args.includes('--sensitive-keywords')) {
     runSensitiveKeywordLinter();
   }
@@ -372,6 +386,7 @@ function main() {
     runShellcheck();
     runYamllint();
     runPrettier();
+    runMarkdownlint();
     runSensitiveKeywordLinter();
     runTSConfigLinter();
     console.log('\nAll linting checks passed!');
